@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<route>
+    <routeHeader>
+        <vesselName>Cap California</vesselName>
+        <maxCapacity>10000.2</maxCapacity>
+        <speed>5.2</speed>
+        <maxSpeed>10.3</maxSpeed>
+        <startDate>2013-03-15T14:00:00+01:00</startDate>
+        <endDate>2013-07-17T21:00:00+02:00</endDate>
+    </routeHeader>
+    <legs>
+        <leg>
+            <startPortName>Gdynia</startPortName>
+            <arrivalDate>2013-03-18T16:00:00+01:00</arrivalDate>
+            <derpartureDate>2013-03-15T14:00:00+01:00</derpartureDate>
+            <dischargeContainers>0</dischargeContainers>
+            <dischargeWeight>0.0</dischargeWeight>
+            <loadContainers>400</loadContainers>
+            <loadWeight>3000.0</loadWeight>
+        </leg>
+        <leg>
+            <startPortName>ĹšwinoujĹ›cie</startPortName>
+            <arrivalDate>2013-04-04T11:00:00+02:00</arrivalDate>
+            <derpartureDate>2013-03-20T20:00:00+01:00</derpartureDate>
+            <dischargeContainers>100</dischargeContainers>
+            <dischargeWeight>2000.0</dischargeWeight>
+            <loadContainers>410</loadContainers>
+            <loadWeight>5200.2</loadWeight>
+        </leg>
+        <leg>
+            <startPortName>Hong Kong</startPortName>
+            <arrivalDate>2013-05-14T15:00:00+02:00</arrivalDate>
+            <derpartureDate>2013-04-05T12:00:00+02:00</derpartureDate>
+            <dischargeContainers>700</dischargeContainers>
+            <dischargeWeight>8000.0</dischargeWeight>
+            <loadContainers>200</loadContainers>
+            <loadWeight>1000.56</loadWeight>
+        </leg>
+        <leg>
+            <startPortName>Hamburg</startPortName>
+            <arrivalDate>2013-07-17T21:00:00+02:00</arrivalDate>
+            <derpartureDate>2013-06-20T15:00:00+02:00</derpartureDate>
+            <dischargeContainers>1000</dischargeContainers>
+            <dischargeWeight>9000.2</dischargeWeight>
+            <loadContainers>800</loadContainers>
+            <loadWeight>8320.2</loadWeight>
+        </leg>
+    </legs>
+</route>

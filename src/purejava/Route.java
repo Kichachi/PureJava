@@ -2,12 +2,13 @@ package purejava;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "leg")
-@XmlType(propOrder = { "startPortName", "arrivalDate", "departureDate", "dischargeContainers", "dischargeWeight",
-		"loadContainers", "loadWeight" })
+@XmlType(propOrder = { "destPort", "arrivalTime", "departureTime", "totalContainersToUnload", "totalWeightToUnload",
+		"totalContainersToLoad", "totalWeightToLoad" })
 public class Route {
 	private String startPort;
 	private int avgLoadTime;
@@ -20,6 +21,10 @@ public class Route {
 	private Date arrivalTime;
 	private int totalContainersToUnload;
 	private double totalWeightToUnload;
+
+	public Route() {
+		super();
+	}
 
 	public Route(RouteBuilder routeBuilder) {
 		super();
@@ -44,14 +49,17 @@ public class Route {
 		return avgLoadTime;
 	}
 
+	@XmlElement(name = "derpartureDate")
 	public Date getDepartureTime() {
 		return departureTime;
 	}
 
+	@XmlElement(name = "loadContainers")
 	public int getTotalContainersToLoad() {
 		return totalContainersToLoad;
 	}
 
+	@XmlElement(name = "loadWeight")
 	public double getTotalWeightToLoad() {
 		return totalWeightToLoad;
 	}
@@ -60,6 +68,7 @@ public class Route {
 		return distToDest;
 	}
 
+	@XmlElement(name = "startPortName")
 	public String getDestPort() {
 		return destPort;
 	}
@@ -68,14 +77,17 @@ public class Route {
 		return avgUnloadTime;
 	}
 
+	@XmlElement(name = "arrivalDate")
 	public Date getArrivalTime() {
 		return arrivalTime;
 	}
 
+	@XmlElement(name = "dischargeContainers")
 	public int getTotalContainersToUnload() {
 		return totalContainersToUnload;
 	}
 
+	@XmlElement(name = "dischargeWeight")
 	public double getTotalWeightToUnload() {
 		return totalWeightToUnload;
 	}

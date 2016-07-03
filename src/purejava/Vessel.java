@@ -3,47 +3,35 @@ package purejava;
 import java.util.Date;
 import java.util.List;
 
-public class Vessel {
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
-	private String vesselName;
-	private double maximumLoad;
-	private double cruiseSpeed;
-	private double maxSpeed;
-	private Date startDate;
-	private Date endDate;
+@XmlRootElement(name = "route")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Vessel {
+	@XmlElement(name = "routeHeader")
+	private VesselHeader vesselHeader;
+	@XmlElementWrapper(name = "legs")
+	@XmlElement(name = "leg")
 	private List<Route> routes;
 
+	public Vessel() {
+		super();
+	}
+
 	public Vessel(VesselBuilder vesselBuilder) {
-		this.vesselName = vesselBuilder.vesselName;
-		this.maximumLoad = vesselBuilder.maximumLoad;
-		this.cruiseSpeed = vesselBuilder.cruiseSpeed;
-		this.maxSpeed = vesselBuilder.maxSpeed;
-		this.startDate = vesselBuilder.startDate;
-		this.endDate = vesselBuilder.endDate;
+		super();
+		vesselHeader = new VesselHeader.VesselHeaderBuilder(vesselBuilder.vesselName)
+				.maximumLoad(vesselBuilder.maximumLoad).cruiseSpeed(vesselBuilder.cruiseSpeed)
+				.maxSpeed(vesselBuilder.maxSpeed).startDate(vesselBuilder.startDate).endDate(vesselBuilder.endDate)
+				.build();
 	}
 
-	public String getVesselName() {
-		return vesselName;
-	}
-
-	public double getMaximumLoad() {
-		return maximumLoad;
-	}
-
-	public double getCruiseSpeed() {
-		return cruiseSpeed;
-	}
-
-	public double getMaxSpeed() {
-		return maxSpeed;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
+	public VesselHeader getVesselHeader() {
+		return vesselHeader;
 	}
 
 	public List<Route> getRoutes() {

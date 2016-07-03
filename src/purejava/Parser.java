@@ -13,7 +13,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Parser {
-	public void parse(File file) {
+	public static Vessel parse(File file) {
+		Vessel vessel = null;
 		try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
 			String line = buffReader.readLine();
 			List<Route> routes = new ArrayList<Route>();
@@ -25,10 +26,10 @@ public class Parser {
 			double maxSpeed = Double.parseDouble(buffReader.readLine());
 			Date startDate = formatter.parse(buffReader.readLine());
 			Date endDate = formatter.parse(buffReader.readLine());
-			Vessel vessel = new Vessel.VesselBuilder(vesselName).maximumLoad(maximumLoad).cruiseSpeed(cruiseSpeed)
+			vessel = new Vessel.VesselBuilder(vesselName).maximumLoad(maximumLoad).cruiseSpeed(cruiseSpeed)
 					.maxSpeed(maxSpeed).startDate(startDate).endDate(endDate).build();
 			// header end
-			line = buffReader.readLine(); // reading new line
+			line = buffReader.readLine(); // reading new line sign
 			// routes start
 			while (line != null) {
 				String startPort = buffReader.readLine();
@@ -48,14 +49,14 @@ public class Parser {
 						.arrivalTime(arrivalTime).totalContainersToUnload(totalContainersToUnload)
 						.totalWeightToUnload(totalWeightToUnload).build();
 				routes.add(route);
-				line = buffReader.readLine();
+				line = buffReader.readLine(); // reading new line sign
 			}
 			vessel.setRoutes(routes);
 			// routes end
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			return;
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
@@ -63,6 +64,6 @@ public class Parser {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-
+		return vessel;
 	}
 }
