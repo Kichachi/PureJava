@@ -16,7 +16,6 @@ public class Parser {
 	public void parse(File file) {
 		try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
 			String line = buffReader.readLine();
-			Vessel vessel;
 			List<Route> routes = new ArrayList<Route>();
 			DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 			// header start
@@ -26,34 +25,23 @@ public class Parser {
 			double maxSpeed = Double.parseDouble(buffReader.readLine());
 			Date startDate = formatter.parse(buffReader.readLine());
 			Date endDate = formatter.parse(buffReader.readLine());
-			vessel = new Vessel.VesselBuilder(vesselName).maximumLoad(maximumLoad).cruiseSpeed(cruiseSpeed)
+			Vessel vessel = new Vessel.VesselBuilder(vesselName).maximumLoad(maximumLoad).cruiseSpeed(cruiseSpeed)
 					.maxSpeed(maxSpeed).startDate(startDate).endDate(endDate).build();
 			// header end
 			line = buffReader.readLine(); // reading new line
 			// routes start
-			String startPort;
-			int avgLoadTime;
-			Date departureTime;
-			int totalContainersToLoad;
-			double totalWeightToLoad;
-			double distToDest;
-			String destPort;
-			int avgUnloadTime;
-			Date arrivalTime;
-			int totalContainersToUnload;
-			double totalWeightToUnload;
 			while (line != null) {
-				startPort = buffReader.readLine();
-				avgLoadTime = Integer.parseInt(buffReader.readLine());
-				departureTime = formatter.parse(buffReader.readLine());
-				totalContainersToLoad = Integer.parseInt(buffReader.readLine());
-				totalWeightToLoad = Double.parseDouble(buffReader.readLine());
-				distToDest = Double.parseDouble(buffReader.readLine());
-				destPort = buffReader.readLine();
-				avgUnloadTime = Integer.parseInt(buffReader.readLine());
-				arrivalTime = formatter.parse(buffReader.readLine());
-				totalContainersToUnload = Integer.parseInt(buffReader.readLine());
-				totalWeightToUnload = Double.parseDouble(buffReader.readLine());
+				String startPort = buffReader.readLine();
+				int avgLoadTime = Integer.parseInt(buffReader.readLine());
+				Date departureTime = formatter.parse(buffReader.readLine());
+				int totalContainersToLoad = Integer.parseInt(buffReader.readLine());
+				double totalWeightToLoad = Double.parseDouble(buffReader.readLine());
+				double distToDest = Double.parseDouble(buffReader.readLine());
+				String destPort = buffReader.readLine();
+				int avgUnloadTime = Integer.parseInt(buffReader.readLine());
+				Date arrivalTime = formatter.parse(buffReader.readLine());
+				int totalContainersToUnload = Integer.parseInt(buffReader.readLine());
+				double totalWeightToUnload = Double.parseDouble(buffReader.readLine());
 				Route route = new Route.RouteBuilder(startPort, destPort).avgLoadTime(avgLoadTime)
 						.departureTime(departureTime).totalContainersToLoad(totalContainersToLoad)
 						.totalWeightToLoad(totalWeightToLoad).distToDest(distToDest).avgUnloadTime(avgUnloadTime)
@@ -62,6 +50,7 @@ public class Parser {
 				routes.add(route);
 				line = buffReader.readLine();
 			}
+			vessel.setRoutes(routes);
 			// routes end
 
 		} catch (FileNotFoundException e) {
@@ -72,7 +61,6 @@ public class Parser {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

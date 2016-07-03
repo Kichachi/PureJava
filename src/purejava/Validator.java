@@ -37,12 +37,14 @@ public class Validator {
 		// case 4
 		// if departure time of first leg differs from start time of vessel OR arrival time of last leg differs from end
 		// time of vessel
-		if (!(vessel.getRoutes().get(0).getDepartureTime().equals(vessel.getStartDate()) || vessel.getRoutes()
+		if (!(vessel.getRoutes().get(0).getDepartureTime().equals(vessel.getStartDate()) && vessel.getRoutes()
 				.get(vessel.getRoutes().size() - 1).getArrivalTime().equals(vessel.getEndDate()))) {
 			System.out.println(
 					"Schedule start date time != first leg departure date time or schedule end date time != last leg arrival date time");
 			error = true;
 		}
+		if (error)
+			return false;
 		// end of case 4
 		return true;
 	}

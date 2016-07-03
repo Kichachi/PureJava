@@ -2,7 +2,7 @@ package purejava;
 
 import java.io.File;
 
-public class main {
+public class PureJava {
 
 	public static void main(String[] args) {
 		Parser parser = new Parser();
