@@ -13,8 +13,8 @@ public class XMLWriter {
 	public static void writeToXml(Vessel vessel) {
 		try {
 			DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH.mm");
-			String fileName = vessel.getVesselHeader().getVesselName() + "_"
-					+ formatter.format(vessel.getVesselHeader().getStartDate()) + "_"
+			String fileName = vessel.getVesselHeader().getVesselName() + " "
+					+ formatter.format(vessel.getVesselHeader().getStartDate()) + " "
 					+ formatter.format(vessel.getVesselHeader().getEndDate()) + ".xml";
 			fileName = fileName.replaceAll("\\s", "_");
 			JAXBContext jaxbContext = JAXBContext.newInstance(Vessel.class);

@@ -55,11 +55,27 @@ public class PureJavaTest {
 	public void validationTest() {
 		File file = new File("vesselsAndRoutes2.txt");
 		Vessel vessel = Parser.parse(file);
-		Assert.assertFalse("Method should return false, as the file is not correct", Validator.validate(vessel));
+		Assert.assertFalse("Method should return false, as the file is not correct", Validator.validateAll(vessel));
+		Assert.assertFalse("Method should return false, as the file is not correct in the terms of case1",
+				Validator.validateCase1(vessel));
+		Assert.assertFalse("Method should return false, as the file is not correct in the terms of case2",
+				Validator.validateCase2(vessel));
+		Assert.assertFalse("Method should return false, as the file is correct in the terms of case3",
+				Validator.validateCase3(vessel));
+		Assert.assertFalse("Method should return false, as the file is not correct in the terms of case4",
+				Validator.validateCase4(vessel));
 
 		file = new File("vesselsAndRoutes.txt");
 		vessel = Parser.parse(file);
-		Assert.assertTrue("Method should return true, as the file is correct", Validator.validate(vessel));
+		Assert.assertTrue("Method should return true, as the file is correct", Validator.validateAll(vessel));
+		Assert.assertTrue("Method should return true, as the file is correct in the terms of case1",
+				Validator.validateCase1(vessel));
+		Assert.assertTrue("Method should return true, as the file is correct in the terms of case2",
+				Validator.validateCase2(vessel));
+		Assert.assertTrue("Method should return true, as the file is correct in the terms of case3",
+				Validator.validateCase3(vessel));
+		Assert.assertTrue("Method should return true, as the file is correct in the terms of case4",
+				Validator.validateCase4(vessel));
 	}
 
 }

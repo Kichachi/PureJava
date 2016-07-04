@@ -19,7 +19,7 @@
             <loadWeight>3000.0</loadWeight>
         </leg>
         <leg>
-            <startPortName>ĹšwinoujĹ›cie</startPortName>
+            <startPortName>Świnoujście</startPortName>
             <arrivalDate>2013-04-04T11:00:00+02:00</arrivalDate>
             <derpartureDate>2013-03-20T20:00:00+01:00</derpartureDate>
             <dischargeContainers>100</dischargeContainers>
