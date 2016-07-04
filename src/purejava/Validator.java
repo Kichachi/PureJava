@@ -83,6 +83,6 @@ public class Validator {
 	}
 
 	public static Boolean validateAll(Vessel vessel) {
-		return validateCase1(vessel) && validateCase2(vessel) && validateCase3(vessel) && validateCase4(vessel);
+		return validateCase1(vessel) & validateCase2(vessel) & validateCase3(vessel) & validateCase4(vessel);
 	}
 }

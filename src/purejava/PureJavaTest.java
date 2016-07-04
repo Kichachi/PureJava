@@ -21,14 +21,15 @@ public class PureJavaTest {
 		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
 		Date date = formatter.parse("17-07-2013 21:00");
-		Assert.assertEquals("End dates aren't equal", vessel.getVesselHeader().getEndDate(), date);
+		Assert.assertEquals("End date have been badly parsed", vessel.getVesselHeader().getEndDate(), date);
 
 		date = formatter.parse("15-03-2013 14:00");
-		Assert.assertEquals("Start dates aren't equal", vessel.getVesselHeader().getStartDate(), date);
+		Assert.assertEquals("Start date have been badly parsed", vessel.getVesselHeader().getStartDate(), date);
 
-		Assert.assertEquals("Maximum loads aren't equal", vessel.getVesselHeader().getMaximumLoad(), 10000.2, 0.000001);
+		Assert.assertEquals("Maximum load have been badly parsed", vessel.getVesselHeader().getMaximumLoad(), 10000.2,
+				0.000001);
 
-		Assert.assertEquals("Max Speed has been badly parsed.", vessel.getVesselHeader().getMaxSpeed(), 10.3, 0.000001);
+		Assert.assertEquals("Max Speed have been badly parsed", vessel.getVesselHeader().getMaxSpeed(), 10.3, 0.000001);
 
 	}
 
@@ -37,7 +38,8 @@ public class PureJavaTest {
 		File file = new File("vesselsAndRoutes.txt");
 		Vessel vessel = Parser.parse(file);
 
-		Assert.assertEquals("Start ports don't match", vessel.getRoutes().get(3).getStartPort(), "Hong Kong");
+		Assert.assertEquals("Start ports have been badly parsed.", vessel.getRoutes().get(3).getStartPort(),
+				"Hong Kong");
 
 		Assert.assertEquals("Total weights to discharge don't match",
 				vessel.getRoutes().get(1).getTotalWeightToUnload(), 2000, 0.000001);
